@@ -88,7 +88,7 @@ controller.on('serialport:error', function(options) {
 cnc.sendMove = function(cmd) {
     var jog = function(params) {
         params = params || {};
-        var s = _.map(params, (value, letter) => {
+        var s = _.map(params, function(value, letter) {
             return '' + letter + value;
         }).join(' ');
         controller.command('gcode', 'G91 G0 ' + s); // relative distance
@@ -96,7 +96,7 @@ cnc.sendMove = function(cmd) {
     };
     var move = function(params) {
         params = params || {};
-        var s = _.map(params, (value, letter) => {
+        var s = _.map(params, function(value, letter) {
             return '' + letter + value;
         }).join(' ');
         controller.command('gcode', 'G0 ' + s);
