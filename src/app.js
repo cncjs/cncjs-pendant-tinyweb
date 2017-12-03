@@ -227,7 +227,7 @@ function renderGrblState(data) {
 
     wpos.x = (wpos.x * factor).toFixed(digits);
     wpos.y = (wpos.y * factor).toFixed(digits);
-    wpos.z = (wpos.y * factor).toFixed(digits);
+    wpos.z = (wpos.z * factor).toFixed(digits);
 
     $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(activeState);
