@@ -91,7 +91,8 @@ cnc.sendMove = function(cmd) {
         var s = _.map(params, function(value, letter) {
             return '' + letter + value;
         }).join(' ');
-        controller.command('gcode', 'G91 G0 ' + s); // relative distance
+        controller.command('gcode', 'G91'); // relative distance
+        controller.command('gcode', 'G0 ' + s);
         controller.command('gcode', 'G90'); // absolute distance
     };
     var move = function(params) {
@@ -340,6 +341,30 @@ controller.on('TinyG:state', function(data) {
     $('[data-route="axes"] [data-name="wpos-x"]').text(wpos.x);
     $('[data-route="axes"] [data-name="wpos-y"]').text(wpos.y);
     $('[data-route="axes"] [data-name="wpos-z"]').text(wpos.z);
+});
+
+controller.on('Marlin:state', function(data) {
+    var mlabel = 'MPos:';
+    switch (data.modal.units) {
+    case 'G20':
+        mlabel = 'MPos (in):';
+        break;
+    case 'G21':
+        mlabel = 'MPos (mm):';
+        break;
+    }
+    var pos = {}
+    pos.x = Number(data.pos.x).toFixed(3);
+    pos.y = Number(data.pos.y).toFixed(3);
+    pos.z = Number(data.pos.z).toFixed(3);
+    // Assume if we get this callback it's because we are connected
+    var stateText = "Connected";
+
+    $('[data-route="axes"] [data-name="active-state"]').text(stateText);
+    $('[data-route="axes"] [data-name="mpos-label"]').text(mlabel);
+    $('[data-route="axes"] [data-name="mpos-x"]').text(pos.x);
+    $('[data-route="axes"] [data-name="mpos-y"]').text(pos.y);
+    $('[data-route="axes"] [data-name="mpos-z"]').text(pos.z);
 });
 
 controller.listAllPorts();
