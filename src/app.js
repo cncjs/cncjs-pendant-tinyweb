@@ -344,8 +344,6 @@ controller.on('TinyG:state', function(data) {
 });
 
 controller.on('Marlin:state', function(data) {
-    console.log(data);
-
     var mlabel = 'MPos:';
     switch (data.modal.units) {
     case 'G20':
@@ -367,10 +365,6 @@ controller.on('Marlin:state', function(data) {
     $('[data-route="axes"] [data-name="mpos-x"]').text(pos.x);
     $('[data-route="axes"] [data-name="mpos-y"]').text(pos.y);
     $('[data-route="axes"] [data-name="mpos-z"]').text(pos.z);
-});
-
-controller.on('Marlin:settings', function(data) {
-    console.log(data);
 });
 
 controller.listAllPorts();
