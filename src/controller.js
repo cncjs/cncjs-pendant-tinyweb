@@ -34,6 +34,17 @@ var socket = root.io.connect('', {
     query: 'token=' + token
 });
 
+// Generate buttons for custom commands
+jQuery.get("../api/commands", {token: token, paging: false}, function(data) {
+    data.records.forEach(function(record) {
+        $(".actions").append( function(){
+            return $('<button type="button" class="btn" data-name="' + record.id + '">' + record.title + '</button>').on('click', function() {
+                jQuery.post("../api/commands/run/" + record.id + "?token=" + token);
+            });
+        })
+    });
+});
+
 socket.on('connect', function() {
     $('#loading').remove(); // Remove loading message
     root.cnc.router.init();

@@ -1,6 +1,9 @@
 [data-route="workspace"] {
   padding: 10px;
 }
+[data-route="workspace"] .actions button {
+  margin-right: 10px;
+}
 [data-route="connection"] {
   padding: 10px;
 }
