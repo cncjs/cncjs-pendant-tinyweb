@@ -88,10 +88,10 @@
                                     <li>
                                         <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('homing')"><i class="fa fa-home"></i>&nbsp;Homing</a>
                                     </li>
-                                    <li>
+                                    <li class="sleep">
                                         <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('gcode', '$SLP')"><i class="fa fa-bed"></i>&nbsp;Sleep</a>
                                     </li>
-                                    <li>
+                                    <li class="unlock">
                                         <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('unlock')"><i class="fa fa-unlock-alt"></i>&nbsp;Unlock</a>
                                     </li>
                                     <li>
@@ -110,12 +110,12 @@
                     <div class="active-state" data-name="active-state"></div>
                 </div>
                 <div class="col-xs-2">
-                    <button type="button" class="btn btn-default" onclick="cnc.controller.command('cyclestart')">
+                    <button type="button" class="btn btn-default cyclestart" onclick="cnc.controller.command('cyclestart')">
                         <i class="fa fa-play"></i>
                     </button>
                 </div>
                 <div class="col-xs-2">
-                    <button type="button" class="btn btn-default" onclick="cnc.controller.command('feedhold')">
+                    <button type="button" class="btn btn-default feedhold" onclick="cnc.controller.command('feedhold')">
                         <i class="fa fa-pause"></i>
                     </button>
                 </div>

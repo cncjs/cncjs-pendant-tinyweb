@@ -367,6 +367,16 @@ controller.on('Marlin:state', function(data) {
     $('[data-route="axes"] [data-name="mpos-z"]').text(pos.z);
 });
 
+controller.on('Marlin:settings', function(data) {
+    // Sleep and unlock are not supported in Marlin
+    $('[data-route="axes"] .sleep').hide();
+    $('[data-route="axes"] .unlock').hide();
+
+    // Cyclestart and feedhold are unimplemented in Marlin so swap with gcode commands instead
+    $('[data-route="axes"] .cyclestart').attr("onclick", "cnc.controller.command('gcode:start')");
+    $('[data-route="axes"] .feedhold').attr("onclick", "cnc.controller.command('gcode:pause')");
+});
+
 controller.listAllPorts();
 
 // Workspace 
