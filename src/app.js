@@ -42,9 +42,9 @@ controller.on('serialport:open', function(options) {
 
     $('[data-route="workspace"] [data-name="port"]').val(port);
 
-    Cookies.set('cnc.controllerType', controllerType);
-    Cookies.set('cnc.port', port);
-    Cookies.set('cnc.baudrate', baudrate);
+    Cookies.set('cnc.controllerType', controllerType,{ expires: 365 });
+    Cookies.set('cnc.port', port,{ expires: 365 });
+    Cookies.set('cnc.baudrate', baudrate,{ expires: 365 });
 
     if (controllerType === 'Grbl') {
         // Read the settings so we can determine the units for position reports
