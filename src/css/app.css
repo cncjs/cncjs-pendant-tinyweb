@@ -113,6 +113,32 @@
     height: 40px;
   }
 }
+@media (min-width: 800px) {
+  [data-route="axes"] .active-state {
+    height: 70px;
+  }
+  [data-route="axes"] .dropdown-menu>li>a .fa {
+    width: 40px;
+  }
+  [data-route="axes"] .dropdown-menu {
+    font-size: 30px;
+  }
+  [data-route="connection"] .btn,
+  [data-route="connection"] .form-control,
+  [data-route="workspace"] .btn,
+  [data-route="workspace"] .list-group-item,
+  [data-route="workspace"] .form-control,
+  [data-route="axes"] .btn,
+  [data-route="axes"] .form-control {
+    font-size: 24px;
+    height: 70px;
+  }
+}
+@media ( max-height: 470px ) {
+  [data-route="axes"] .control-pad .bottom-row {
+    display: none;
+  }
+}
 @media (min-width: 992px) {
   [data-route="axes"] {
     font-size: 24px;

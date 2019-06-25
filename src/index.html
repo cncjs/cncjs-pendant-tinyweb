@@ -356,6 +356,53 @@
                     </button>
                 </div>
             </div>
+            <div class="row no-gutter bottom-row">
+                <div class="col-xs-4">
+                    <button
+                        type="button"
+                        class="btn btn-default"
+                        title="Disable Motors"
+                        onclick="cnc.controller.command('motor:disable')">
+                        <i class="fa fa-unlock"></i> Disable Motors
+                    </button>
+                </div>
+                <div class="col-xs-2">
+                    <button
+                        type="button"
+                        class="btn btn-default"
+                        title="G92 X0"
+                        onclick="cnc.controller.command('gcode', 'G92 X0')">
+                        G92 X0
+                    </button>
+                </div>
+                <div class="col-xs-2">
+                    <button
+                        type="button"
+                        class="btn btn-default"
+                        title="G92 Y0"
+                        onclick="cnc.controller.command('gcode', 'G92 Y0')">
+                        G92 Y0
+                    </button>
+                </div>
+                <div class="col-xs-2">
+                    <button
+                        type="button"
+                        class="btn btn-default"
+                        title="G92 Z0"
+                        onclick="cnc.controller.command('gcode', 'G92 Z0')">
+                        G92 Z0
+                    </button>
+                </div>
+                <div class="col-xs-2">
+                    <button
+                        type="button"
+                        class="btn btn-default reload"
+                        title="Reload"
+                        onclick="location.reload();">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
