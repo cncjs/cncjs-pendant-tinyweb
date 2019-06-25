@@ -345,18 +345,21 @@ controller.on('TinyG:state', function(data) {
 
 controller.on('Marlin:state', function(data) {
     var mlabel = 'MPos:';
-    switch (data.modal.units) {
-    case 'G20':
-        mlabel = 'MPos (in):';
-        break;
-    case 'G21':
-        mlabel = 'MPos (mm):';
-        break;
-    }
     var pos = {}
-    pos.x = Number(data.pos.x).toFixed(3);
-    pos.y = Number(data.pos.y).toFixed(3);
-    pos.z = Number(data.pos.z).toFixed(3);
+    switch (data.modal.units) {
+        case 'G20':
+            mlabel = 'MPos (in):';
+            pos.x = (data.pos.x/25.4).toFixed(4);
+            pos.y = (data.pos.y/25.4).toFixed(4);
+            pos.z = (data.pos.z/25.4).toFixed(4);
+            break;
+        case 'G21':
+            mlabel = 'MPos (mm):';
+            pos.x = Number(data.pos.x).toFixed(3);
+            pos.y = Number(data.pos.y).toFixed(3);
+            pos.z = Number(data.pos.z).toFixed(3);
+            break;
+    }
     // Assume if we get this callback it's because we are connected
     var stateText = "Connected";
 
@@ -365,6 +368,10 @@ controller.on('Marlin:state', function(data) {
     $('[data-route="axes"] [data-name="mpos-x"]').text(pos.x);
     $('[data-route="axes"] [data-name="mpos-y"]').text(pos.y);
     $('[data-route="axes"] [data-name="mpos-z"]').text(pos.z);
+    $('[data-route="axes"] [data-name="wpos-label"]').html('<br>');
+    $('[data-route="axes"] [data-name="wpos-x"]').hide();
+    $('[data-route="axes"] [data-name="wpos-y"]').hide();
+    $('[data-route="axes"] [data-name="wpos-z"]').hide();
 });
 
 controller.on('Marlin:settings', function(data) {
