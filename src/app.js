@@ -382,6 +382,10 @@ controller.on('Marlin:settings', function(data) {
     // Cyclestart and feedhold are unimplemented in Marlin so swap with gcode commands instead
     $('[data-route="axes"] .cyclestart').attr("onclick", "cnc.controller.command('gcode:start')");
     $('[data-route="axes"] .feedhold').attr("onclick", "cnc.controller.command('gcode:pause')");
+
+    // G30 is unsupported in Marlin, so split the G28 button into both G28 X Y and G28 Z buttons
+    $('[data-route="axes"] .g28').attr("onclick", "cnc.controller.command('gcode', 'G28 X Y')").text("G28 X Y");
+    $('[data-route="axes"] .g30').attr("onclick", "cnc.controller.command('gcode', 'G28 Z')").text("G28 Z");
 });
 
 controller.listAllPorts();
