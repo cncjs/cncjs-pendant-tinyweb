@@ -14,7 +14,7 @@ First, download the latest zip file from https://github.com/cncjs/cncjs-pendant-
 
 Then, run cnc with the `-m` option, like below:
 ```
-$ cnc -m /pendant:/home/tinyweb
+$ cnc -m /pendant:/home/tinyweb/src
 ```
 
 After that, you should be able to see the tinyweb console as shown below at `http://localhost:8000/pendant/`.
